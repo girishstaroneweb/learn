@@ -1,6 +1,32 @@
- # Control Room System – Workflow Summary
+       NINAMAGIRISH
+       
+       
+       🧨🧨🧨🧨🧨🎆🎆🎆🎆✅✅
+       
+       # Control Room System – Workflow Summary
 
 ## 1. Dashboard
+
+
+
+
+        $userAssigendUnits = $this->db->query("
+              SELECT table1.cs_id, tbl_customer_deputation.dp_id , tbl_customer_deputation.dp_unit_name , tbl_customer.cs_invoice_name
+                FROM (
+                            SELECT a.cs_id ,  REPLACE(GROUP_CONCAT(dp_id), '|', ',')  assigend_unit 
+                            FROM `tbl_customer_dpoassign` a 
+                            WHERE `u_id` = $uid 
+                            GROUP BY `cs_id`
+                     ) table1
+                        JOIN tbl_customer_deputation ON FIND_IN_SET(tbl_customer_deputation.dp_id, table1.assigend_unit)
+                        LEFT JOIN tbl_customer on tbl_customer.cs_id = table1.cs_id 
+                        LEFT join branch_unit_detail on branch_unit_detail.dp_id =tbl_customer_deputation.dp_id 
+                        WHERE branch_unit_detail.unit_end_date IS NULL
+                        GROUP BY table1.cs_id , tbl_customer_deputation.dp_id
+                        ORDER BY tbl_customer.cs_invoice_name ASC")->result_array();
+
+
+1234
 
 After successful login, users will be redirected to the dashboard, which will display the following information:
 
