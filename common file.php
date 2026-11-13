@@ -1,4 +1,4 @@
-# Control Room System – Workflow Summary
+ # Control Room System – Workflow Summary
 
 ## 1. Dashboard
 
