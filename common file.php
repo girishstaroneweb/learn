@@ -18,6 +18,8 @@
                             WHERE `u_id` = $uid 
                             GROUP BY `cs_id`
                      ) table1
+                     
+                     change in query
                         JOIN tbl_customer_deputation ON FIND_IN_SET(tbl_customer_deputation.dp_id, table1.assigend_unit)
                         LEFT JOIN tbl_customer on tbl_customer.cs_id = table1.cs_id 
                         LEFT join branch_unit_detail on branch_unit_detail.dp_id =tbl_customer_deputation.dp_id 
